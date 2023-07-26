@@ -33,6 +33,9 @@
             font-size: 13px;
             padding: 10px;
         }
+        #range{
+            background: green;
+        }
         .calculate{
             width: 100%;
             padding: 5px;
@@ -74,40 +77,32 @@
             <h6>Your Height is : <span id="text2"></span></h6>
         </div>
         <!-- heights ends -->
-        <input type="checkbox" class="check"  id="check_box" onclick="check(this)">calculate using input filed
-        <button onclick="clk(this)"  class="calculate">Calculate</button>
+        
+        <button onclick="clk(this)"  class="calculate">Calculate Input Field</button>
+        <button onclick="clk_range(this)" id="range" class="calculate">Calculate Range Field</button>
         <h6 class="final">Your BMI is : <span id="final"></span></h6>
     </div>
     <!-- bmi ends -->
 
 
-    <script>
+    <script>  
+
+        function clk_range(){
+            var weight = document.getElementById("weight_range").value;
+            document.getElementById("text1").innerHTML=weight;
+            var height = document.getElementById("height_range").value;
+            document.getElementById("text2").innerHTML=height;
+            var output = ((weight)/(height * height))*10000;
+            document.getElementById("final").innerHTML=output.toFixed();
+        }
+
         function clk(){
             var a = document.getElementById("weight_input").value;
             var b = document.getElementById("height_input").value;
             var c = ((a)/(b * b))*10000;
             document.getElementById("final").innerHTML=c.toFixed();
-        }    
-
-        function clk(){
-            var a = document.getElementById("weight_range").value;
-            document.getElementById("text1").innerHTML=a;
-            var b = document.getElementById("height_range").value;
-            document.getElementById("text2").innerHTML=b;
-            var c = ((a)/(b * b))*10000;
-            document.getElementById("final").innerHTML=c.toFixed();
-        }
-        function check(){
-            var check = document.getElementById("check_box");
-            if(check.checked == true){
-                document.getElementById("weight_range").disabled = true;
-                document.getElementById("height_range").disabled = true;
-            }
-            else{
-                document.getElementById("weight_range").disabled = false;
-                document.getElementById("height_range").disabled = false;
-            }
-        }
+        }  
+        
     </script>
 </body>
 </html>
