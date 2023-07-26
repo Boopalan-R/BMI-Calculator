@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="	https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css">
+    <title>Document</title>
+    <style>
+        .bmi{
+            width: 350px;
+            padding: 20px;
+            background: ghostwhite;
+            margin: auto;
+            margin-top: 150px;
+            border: solid 2px rgb(225, 225, 224);
+            box-shadow: 2px 4px 10px 4px #edebeb;
+        }
+        .weight_range{
+            width: 100%;
+        }
+        .weight_input{
+            width: 100%;
+            border-radius: 5px;
+            font-size: 13px;
+            padding: 10px;
+        }
+        .height_range{
+            width: 100%;
+        }
+        .height_input{
+            width: 100%;
+            border-radius: 5px;
+            font-size: 13px;
+            padding: 10px;
+        }
+        .calculate{
+            width: 100%;
+            padding: 5px;
+            background: blue;
+            color: white;
+            font-size: 14px;
+            font-weight: 600;
+            border: none;
+            margin-top: 10px;
+        }
+        .final{
+            width: 100%;
+            padding: 15px;
+            background: orange;
+            color: white;
+            font-size: 14px;
+            font-weight: 600;
+            border: none;
+            margin-top: 10px;
+        }
+    </style>
+</head>
+<body>
+    <!-- bmi starts -->
+    <div class="bmi">
+        <!-- weight starts -->
+        <div class="weight">
+            <h6>Weight</h6>
+            <input type="range" value="0" id="weight_range" class="weight_range">
+            <input type="text" id="weight_input" class="weight_input" placeholder="Enter the Weight">
+            <h6>Your Weight is : <span id="text1"></span></h6>
+        </div>
+        <!-- weight ends -->
+        <!-- height starts -->
+        <div class="height">
+            <h6>Height</h6>
+            <input type="range" value="0" id="height_range" class="height_range">
+            <input type="text" id="height_input" class="height_input" placeholder="Enter the height">
+            <h6>Your Height is : <span id="text2"></span></h6>
+        </div>
+        <!-- heights ends -->
+        <input type="checkbox" class="check"  id="check_box" onclick="check(this)">calculate using input filed
+        <button onclick="clk(this)"  class="calculate">Calculate</button>
+        <h6 class="final">Your BMI is : <span id="final"></span></h6>
+    </div>
+    <!-- bmi ends -->
+
+
+    <script>
+        function clk(){
+            var a = document.getElementById("weight_input").value;
+            var b = document.getElementById("height_input").value;
+            var c = ((a)/(b * b))*10000;
+            document.getElementById("final").innerHTML=c.toFixed();
+        }    
+
+        function clk(){
+            var a = document.getElementById("weight_range").value;
+            document.getElementById("text1").innerHTML=a;
+            var b = document.getElementById("height_range").value;
+            document.getElementById("text2").innerHTML=b;
+            var c = ((a)/(b * b))*10000;
+            document.getElementById("final").innerHTML=c.toFixed();
+        }
+        function check(){
+            var check = document.getElementById("check_box");
+            if(check.checked == true){
+                document.getElementById("weight_range").disabled = true;
+                document.getElementById("height_range").disabled = true;
+            }
+            else{
+                document.getElementById("weight_range").disabled = false;
+                document.getElementById("height_range").disabled = false;
+            }
+        }
+    </script>
+</body>
+</html>
